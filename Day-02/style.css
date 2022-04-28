@@ -1,0 +1,120 @@
+:root {
+  --scaleY: -22px;
+}
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: #fff;
+  color: #333;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #3faf82;
+  color: #fff;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  cursor: pointer;
+}
+
+label span {
+  background: #fff;
+  border-radius: 10px;
+  height: 7px;
+  margin: 7px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+span {
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ span:nth-of-type(1) {
+  animation: top-bar 3s ease-out 0s normal both;
+}
+
+input[type="checkbox"]:checked ~ span:nth-of-type(2) {
+  animation: middle-bar 3s ease-out 0s normal both;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="checkbox"]:checked ~ span:nth-of-type(3) {
+  animation: bottom-bar 3s ease-out 0s normal both;
+}
+
+@keyframes top-bar {
+  0.0% {
+    transform: translate(0px, 0px);
+    transform-origin: center;
+  }
+
+  50% {
+    transform: translate(0px, 22px);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: rotate(135deg) scale(1)
+      translate(calc(var(--scaleY) + 50%), var(--scaleY));
+  }
+}
+
+@keyframes middle-bar {
+  0.0% {
+    transform: translate(0px, 0px);
+    transform-origin: center;
+  }
+
+  50% {
+    width: 80%;
+    transform: translate(0px, 0px);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: scale(0.8) translate(0px, 0px);
+    transform-origin: center;
+    opacity: 0;
+  }
+}
+
+@keyframes bottom-bar {
+  0.0% {
+    transform: translate(0px, 0px);
+    transform-origin: center;
+  }
+
+  50% {
+    transform: translate(0px, -22px);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: rotate(45deg) scale(1)
+      translate(calc(var(--scaleY) / 2 + 5px), calc(var(--scaleY) / 2 - 6px));
+  }
+}
